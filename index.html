@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иван Тараносов | Портфолио</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="snow-container">
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="garage-menu">
+            <div class="menu-header">
+                <h1 class="menu-title">Вкратце о себе</h1>
+                <p class="menu-subtitle">> Выберите интересующую Вас ячейку для подробной информации</p>
+            </div>
+            
+            <nav class="nav-buttons">
+                <button class="nfs-btn active" data-target="career">ОБЗОР КАРЬЕРЫ</button>
+                <button class="nfs-btn" data-target="python">PYTHON СКРИПТЫ</button>
+                <button class="nfs-btn" data-target="minecraft">MINECRAFT JAVA</button>
+                <button class="nfs-btn" data-target="soft-skills">SOFT SKILLS / ВНЕУЧЕБКА</button>
+            </nav>
+        </div>
+
+        <div class="display-panel">
+            
+            <div class="content-screen active" id="career">
+                <h2>ОБЗОР КАРЬЕРЫ</h2>
+                <div class="rich-text">
+                    <p>Я - Иван Тараносов,студент группы ИСиП-11. Добро пожаловать в мое портфолио. Я - Первокурсник ГАПОУ ТСПК. Специализация: Бэкенд-разработка, системная автоматизация и управление игровыми серверами. Специальность: Информационные системы и программирование(09.02.07).</p>
+                </div>
+            </div>
+
+            <div class="content-screen" id="python">
+                <h2>PYTHON СКРИПТЫ</h2>
+                <div class="rich-text">
+                    <p>В данном секторе консолидированы результаты работы над локальными утилитми (CLI) и скриптами автоматизации на Python. Мой текущий стек включает базовое проектирование реляционных баз данных и работу с системными таймингами.</p>
+                    
+                    <p class="list-header" style="margin-top: 10px; font-weight: 700; color: #e0e0e0;">Ключевые модули в репозитории:</p>
+                    <ul style="list-style-type: none; padding-left: 0; display: flex; flex-direction: column; gap: 10px;">
+                        <li style="position: relative; padding-left: 15px; color: #dddddd; line-height: 1.5;">
+                            <span style="position: absolute; left: 0; color: #00ffcc;">•</span>
+                            <strong>Проектирование SQL:</strong> Архитектурные решения на базе MySQL/SQLite для структурированного хранения данных и реализации быстрых поисковых запросов.
+                        </li>
+                        <li style="position: relative; padding-left: 15px; color: #dddddd; line-height: 1.5;">
+                            <span style="position: absolute; left: 0; color: #00ffcc;">•</span>
+                            <strong>Консольный калькулятор:</strong> Программа с обработкой исключений (валидация ввода, защита от деления на ноль) и поддержкой цепочки вычислений.
+                        </li>
+                        <li style="position: relative; padding-left: 15px; color: #dddddd; line-height: 1.5;">
+                            <span style="position: absolute; left: 0; color: #00ffcc;">•</span>
+                            <strong>Системные часы:</strong> Скрипт точного тайминга и логирования времени для фиксации внутренних процессов системы.
+                        </li>
+                    </ul>
+                    
+                    <a href="https://github.com/taranosovivan" target="_blank" class="github-link-btn">
+                        ОТКРЫТЬ РЕПОЗИТОРИЙ GITHUB
+                    </a>
+                </div>
+            </div>
+
+            <div class="content-screen" id="minecraft">
+                <h2>MINECRAFT JAVA СЕРВЕР</h2>
+                <div class="rich-text">
+                    <p>Управление игровым сервером, локализация плагинов, работа с конфигурациями и оптимизация Java-ядра под высокие нагрузки. Перевод и локализация англоязычных плагинов на русский язык для комфортной игры.</p>
+                </div>
+            </div>
+
+            <div class="content-screen" id="soft-skills">
+                <div class="skills-interface">
+                    
+                    <div class="arc-container">
+                        <div class="circle-node active" style="top: 30px; left: 20px;" data-info="gto">
+                            <span class="node-number">1</span>
+                        </div>
+                        <div class="circle-node" style="top: calc(20% + 18px); left: 124px;" data-info="dota">
+                            <span class="node-number">2</span>
+                        </div>
+                        <div class="circle-node" style="top: calc(40% + 6px); left: 147.35px;" data-info="mger">
+                            <span class="node-number">3</span>
+                        </div>
+                        <div class="circle-node" style="top: calc(60% - 6px); left: 147.35px;" data-info="voice">
+                            <span class="node-number">4</span>
+                        </div>
+                        <div class="circle-node" style="top: calc(80% - 18px); left: 124px;" data-info="team">
+                            <span class="node-number">5</span>
+                        </div>
+                        <div class="circle-node" style="top: calc(100% - 30px); left: 20px;" data-info="future">
+                            <span class="node-number">6</span>
+                        </div>
+                    </div>
+
+                    <div class="node-details">
+                        <div class="info-block active" id="info-gto">
+                            <h3>ФИЗИЧЕСКАЯ ПОДГОТОВКА</h3>
+                            <p class="node-tag">STATUS: Бронзовая медаль ГТО</p>
+                            <p>Регулярные тренировки на брусьях и турниках. Развитие дисциплины и выносливости.</p>
+                        </div>
+                        
+                        <div class="info-block" id="info-dota">
+                            <h3>КИБЕРСПОРТ</h3>
+                            <p class="node-tag">Организация и проведение турнира Dota 2</p>
+                            <p>Организация и проведение турнира, менеджмент призового фонда и координация команд. Планирование дальнейшего проведения подобных мероприятий вне колледжа в более широких кругах</p>
+                        </div>
+
+                        <div class="info-block" id="info-mger">
+                            <h3>ШКОЛА ЛИДЕРСТВА</h3>
+                            <p class="node-tag">МГЕР</p>
+                            <p>Участие в "Школе Лидерства" от Молодой Гвардии Единой России. Развитие управленческих навыков, координация проектов и командная работа.</p>
+                        </div>
+
+                        <div class="info-block" id="info-voice">
+                            <h3>ФАН-ДУБЛЯЖ</h3>
+                            <p class="node-tag">Хобби: Фан-Озвучка</p>
+                            <p>Озвучка фильмов и аниме в Discord-сообществах. Работа с аудио и дикцией.</p>
+                        </div>
+
+                        <div class="info-block" id="info-team">
+                            <h3>КОМАНДНАЯ РАБОТА</h3>
+                            <p class="node-tag">Скилл: Командная работа</p>
+                            <p>Умение распределять задачи и эффективно взаимодействовать внутри IT- и других команд.</p>
+                        </div>
+
+                        <div class="info-block" id="info-future">
+                            <h3>РАСШИРЕНИЕ СИСТЕМЫ</h3>
+                            <p class="node-tag">STATUS: В разработке</p>
+                            <p>Ячейка готова для интеграции новых софт-скиллов и достижений в процессе обучения. Дальше - больше ;)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

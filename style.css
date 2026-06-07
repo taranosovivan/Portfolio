@@ -1,0 +1,392 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #07090b;
+    /* Высокотехнологичная сетка на бэкграунде */
+    background-image: 
+        linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at center, rgba(20, 25, 31, 0.8) 0%, #07090b 100%);
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+    color: #ffffff;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    /* Плавное движение сетки на фоне */
+    animation: backgroundScroll 30s linear infinite;
+}
+
+/* Затемнение по краям экрана (виньетка) */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   2. СЕТКА ИНТЕРФЕЙСА
+   ========================================================================== */
+.main-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    padding: 0 5% 0 8%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+/* Левое меню выбора секторов */
+.garage-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    flex-shrink: 0;
+}
+
+.menu-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #e0e0e0;
+    border-left: 4px solid #ff4444;
+    padding-left: 15px;
+}
+
+.menu-subtitle {
+    font-size: 0.85rem;
+    color: #00ffcc;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding-left: 15px;
+}
+
+.nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+/* Кнопки меню в стиле NFS */
+.nfs-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: #b3b3b3;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+    width: 320px;
+}
+
+.nfs-btn.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-left: 5px solid #00ffcc;
+    box-shadow: -10px 0 20px rgba(0, 255, 204, 0.2);
+}
+
+.nfs-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   3. ПРАВЫЙ МОНИТОР (ВЫВОД ДАННЫХ)
+   ========================================================================== */
+.display-panel {
+    flex-grow: 1;
+    flex-shrink: 0; 
+    width: 780px;   
+    height: 65vh;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+/* Эффект линий сканирования CRT поверх экрана */
+.display-panel::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border-radius: 12px;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(0, 255, 204, 0.02), rgba(255, 0, 0, 0.01), rgba(0, 0, 255, 0.02));
+    z-index: 10;
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.content-screen {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-screen.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.content-screen h2 {
+    font-size: 1.9rem;
+    color: #00ffcc;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.rich-text {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+}
+
+.rich-text p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #dddddd;
+    text-align: left;
+}
+
+/* Красивая скошенная кнопка репозитория */
+.github-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    margin-top: auto; 
+    padding-top: 10px;
+    background: rgba(0, 255, 204, 0.05);
+    color: #00ffcc;
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+    width: auto;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.05);
+}
+
+.github-link-btn:hover {
+    background: rgba(0, 255, 204, 0.15);
+    border-color: #00ffcc;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   4. ИНТЕРФЕЙС "СОЗВЕЗДИЕ" (ВНЕУЧЕБКА)
+   ========================================================================== */
+.skills-interface {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start; 
+    gap: 30px; 
+}
+
+.arc-container {
+    position: relative;
+    width: 180px;
+    height: 100%;
+    margin-left: 10px; 
+    flex-shrink: 0;
+}
+
+.arc-container::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    left: -110px; 
+    width: 260px;
+    border-right: 2px dashed rgba(0, 255, 204, 0.3);
+    border-radius: 0 50% 50% 0; 
+    z-index: 1;
+    pointer-events: none;
+}
+
+.circle-node {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    background: #111111;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, width 0.2s, height 0.2s;
+}
+
+.node-number {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #555555;
+    transition: color 0.3s;
+}
+
+.circle-node:hover, .circle-node.active {
+    border-color: #00ffcc;
+    background: #0d0d0d;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+    width: 66px;  
+    height: 66px;
+}
+
+.circle-node:hover .node-number, .circle-node.active .node-number {
+    color: #00ffcc;
+}
+
+.node-details {
+    flex-grow: 1;
+    position: relative;
+    height: 100%;
+    min-width: 320px; 
+}
+
+.info-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.info-block.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.info-block h3 {
+    font-size: 1.45rem;
+    color: #ffffff;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.node-tag {
+    font-size: 0.8rem;
+    color: #ff4444;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.info-block p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #cccccc;
+    text-align: left;
+    white-space: normal; 
+}
+
+/* ==========================================================================
+   5. ЭФФЕКТ ПАДАЮЩЕГО НЕОНОВОГО СНЕГА
+   ========================================================================== */
+.snow-container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1; 
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    background: rgba(0, 255, 204, 0.45); 
+    box-shadow: 0 0 8px rgba(0, 255, 204, 0.8); 
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+.snowflake:nth-child(1) { left: 10%; width: 3px; height: 3px; animation-duration: 8s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 25%; width: 4px; height: 4px; animation-duration: 11s; animation-delay: 2s; opacity: 0.6; }
+.snowflake:nth-child(3) { left: 40%; width: 2px; height: 2px; animation-duration: 7s; animation-delay: 4s; }
+.snowflake:nth-child(4) { left: 55%; width: 5px; height: 5px; animation-duration: 14s; animation-delay: 1s; opacity: 0.4; }
+.snowflake:nth-child(5) { left: 70%; width: 3px; height: 3px; animation-duration: 9s; animation-delay: 5s; }
+.snowflake:nth-child(6) { left: 85%; width: 4px; height: 4px; animation-duration: 12s; animation-delay: 3s; }
+.snowflake:nth-child(7) { left: 15%; width: 2px; height: 2px; animation-duration: 6s; animation-delay: 7s; }
+.snowflake:nth-child(8) { left: 35%; width: 5px; height: 5px; animation-duration: 15s; animation-delay: 6s; opacity: 0.5; }
+.snowflake:nth-child(9) { left: 50%; width: 3px; height: 3px; animation-duration: 10s; animation-delay: 2s; }
+.snowflake:nth-child(10) { left: 65%; width: 4px; height: 4px; animation-duration: 8s; animation-delay: 4s; }
+.snowflake:nth-child(11) { left: 80%; width: 2px; height: 2px; animation-duration: 11s; animation-delay: 1s; }
+.snowflake:nth-child(12) { left: 95%; width: 3px; height: 3px; animation-duration: 13s; animation-delay: 3s; }
+
+/* ==========================================================================
+   6. АНИМАЦИИ
+   ========================================================================== */
+@keyframes backgroundScroll {
+    0% { background-position: 0px 0px, 0px 0px, center; }
+    100% { background-position: 40px 40px, 40px 40px, center; }
+}
+
+@keyframes fall {
+    0% { top: -20px; transform: translateX(0px); }
+    50% { transform: translateX(20px); }
+    100% { top: 105vh; transform: translateX(-10px); }
+}
